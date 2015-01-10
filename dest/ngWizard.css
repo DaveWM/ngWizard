@@ -1,0 +1,53 @@
+.wizard-container {
+  background-color: #e7e7e7;
+}
+.wizard-container .wizard-main {
+  padding: 20px;
+}
+.wizard-container .wizard-main .pager i {
+  -webkit-transition: all 0.3s ease;
+}
+.wizard-container .wizard-main .pager i.selected {
+  color: #38a7e2;
+  -webkit-transform: translateY(-3px);
+}
+.wizard-container .wizard-main .pager i.disabled {
+  color: gray;
+  cursor: not-allowed;
+}
+.wizard-container .wizard-main .wizard-step-container {
+  overflow-x: hidden;
+  -webkit-perspective: 800px;
+  -moz-perspective: 800px;
+  -ms-perspective: 800px;
+  perspective: 800px;
+}
+.wizard-container .wizard-main .wizard-step {
+  background-color: white;
+  padding: 15px;
+  box-shadow: gray 5px 10px 30px;
+  display: block;
+}
+.wizard-container .wizard-sidebar {
+  margin-top: 65px;
+  margin-bottom: 30px;
+  background-color: white;
+}
+.wizard-container .wizard-sidebar .progress {
+  margin: 0;
+}
+.wizard-container .wizard-sidebar li.active a {
+  margin-left: 15px;
+}
+.wizard-container .wizard-sidebar li a {
+  -ms-transition: margin 0.5s ease;
+  -moz-transition: margin 0.5s ease;
+  -webkit-transition: margin 0.5s ease;
+  transition: margin 0.5s ease;
+}
+.wizard-container .btn.submit {
+  margin-bottom: 5px;
+}
+.wizard-container .btn.submit i.ng-hide-add {
+  display: none;
+}

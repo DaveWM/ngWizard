@@ -1,0 +1,62 @@
+﻿//@import "../animations.less";
+
+
+.wizard-container {
+    background-color: #e7e7e7;
+
+    .wizard-main{ 
+        padding: 20px;
+        .pager i{
+            -webkit-transition: all 0.3s ease;
+            &.selected{
+                color: #38a7e2;
+                -webkit-transform: translateY(-3px);
+            }
+            &.disabled{
+                color:gray;
+                cursor: not-allowed;
+            }
+       }
+        .wizard-step-container{
+            // this is to prevent sliding animation making the container wider than it should be
+            overflow-x: hidden;
+                // needed for 3d transforms to work, don't know why
+            -webkit-perspective: 800px;
+            -moz-perspective: 800px;
+            -ms-perspective: 800px;
+            perspective: 800px;
+        }
+        .wizard-step{
+            background-color: white;
+            padding:15px;
+            box-shadow: gray 5px 10px 30px;
+            display: block;
+        }
+    }
+    .wizard-sidebar{
+        margin-top:65px;
+        margin-bottom: 30px;
+        background-color: white;
+        .progress{
+            margin: 0;
+        }
+        li{
+            &.active a{
+                margin-left: 15px;
+            }
+            a{
+                -ms-transition: margin 0.5s ease;
+                -moz-transition: margin 0.5s ease;
+                -webkit-transition: margin 0.5s ease;
+                transition: margin 0.5s ease;
+            }
+        }
+    }
+    .btn.submit{
+        margin-bottom: 5px;
+        i.ng-hide-add{
+            // this is to prevent angular waiting for the spinning animation to stop before hiding the loading spinner
+            display:none;
+        }
+    }
+}
