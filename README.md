@@ -1,5 +1,5 @@
 # ngWizard
-ngWizard is an angular directive for creating an animated and reponsive wizard style form, you can see a demo [here](http://run.plnkr.co/OxWTiOrm5L15cLPr/).
+ngWizard is an angular directive for creating an animated and reponsive wizard style form, you can see a [demo here](http://embed.plnkr.co/NIxkmEEJ0jrOPR8oM7iB/preview)
 >**Important Note** This directive is not compatible with angular 1.2.x, because of [a bug with nested transclusion](https://github.com/angular/angular.js/issues/6435).
 >You need to use angular 1.3.0 or later.
 
@@ -46,6 +46,7 @@ This will disable the step until the required step is completed.
 | `title` | string | The title of the step. |
 | `required-step-number` | integer | The step that is required before this step can be navigated to (0 indexed). |
 | `entered` | function | Function  to call when this step is entered. |
+| `animation` | string | Determines the type animation for entering this step. By default, you can choose `slide`, `zoom` or `fade-in`. If you want to add your own animations, you can add them in css [as in the angular documentation](https://docs.angularjs.org/api/ng/directive/ngShow#animations).|
 
 ## Dependencies
 ngWizard has dependencies on:

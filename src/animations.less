@@ -1,0 +1,46 @@
+﻿.animate{
+    .transform(@transform){
+        transform: @transform;
+        -ms-transform: @transform;
+        -moz-transform: @transform;
+        -webkit-transform: @transform;
+    }
+    .filter(@filter){
+        -webkit-filter: @filter;
+        -moz-filter: @filter;
+        -o-filter: @filter;
+        -ms-filter: @filter;
+    }
+    .animation(@start, @end){
+        &.ng-hide-remove-active, &.ng-hide-add-active{
+            -webkit-transition: 0.5s all ease;
+            position:relative;
+        }
+        &.ng-hide-remove.ng-hide-remove-active{
+            @end();
+        }
+        &.ng-hide-add{
+            display: none !important;
+        }
+        &.ng-hide-remove{
+            @start();
+        }
+    }
+
+    &.slide{
+        .animation({.transform(translateX(20%)); opacity: 0.5;}, {.transform(translateX(0)); opacity: 1;});
+    }
+    &.fade-in{
+
+        .animation({opacity: 0;}, {opacity: 1;});
+    }
+    &.zoom{
+        .animation({
+            .transform(translateZ(-250px));
+            .filter(opacity(10%));
+        },{
+             .transform(translateZ(0));
+            .filter(opacity(100%));
+        });
+    }
+}
