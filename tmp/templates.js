@@ -23,7 +23,7 @@ angular.module("src/wizardTemplate.html", []).run(["$templateCache", function($t
     "                <i class=\"fa\" ng-class=\"{'fa-circle-o disabled': getStepState(step) == stepStatesEnum.disabled, 'fa-circle': getStepState(step) == stepStatesEnum.complete, 'fa-circle-o': getStepState(step) == stepStatesEnum.ready, selected: getCurrentStep() == step}\"\n" +
     "                   ng-click=\"goToStepByReference(step)\" tooltip=\"{{step.title}}\"></i>\n" +
     "            </li>\n" +
-    "            <li class=\"next\" ng-class=\"{disabled: !hasNext()}\"><a href=\"#n g-click=\"goToNext()\">Next <i class=\"fa fa-arrow-circle-right\"></i></a></li>\n" +
+    "            <li class=\"next\" ng-class=\"{disabled: !hasNext()}\"><a href=\"#\" ng-click=\"goToNext()\">Next <i class=\"fa fa-arrow-circle-right\"></i></a></li>\n" +
     "        </ul>\n" +
     "        <div class=\"wizard-step-container\" ng-transclude></div>\n" +
     "    </div>\n" +
