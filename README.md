@@ -3,14 +3,19 @@ ngWizard is an angular directive for creating an animated and reponsive wizard s
 >**Important Note** This directive is not compatible with angular 1.2.x, because of [a bug with nested transclusion](https://github.com/angular/angular.js/issues/6435).
 >You need to use angular 1.3.0 or later.
 
-## Using the Wizard
-You can get the required scripts and css for ngWizard from bower by running the command `bower install ng-wizard --save`
-
-You then need to add a dependency on the `ngWizard` module to your app module:
-``` js
+## Installing ngWizard
+- Either run `bower install ng-wizard --save`, or download the repo and add `dest/ngWizard.js` and `dest/ngWizard.css` to your project
+- Reference `ngWizard.js` and `ngWizard.css` in your HTML, e.g.
+```html
+<script scr="bower_components/ng-wizard/dest/ngWizard.js"></script>
+<link rel="stylesheet" href="bower_components/ng-wizard/dest/ngWizard.css">
+```
+- Add a dependency on the `ngWizard` module to your ng-app module: 
+```js
 angular.module('app',['ngWizard']);
 ```
 
+## Using the Wizard
 ngWizard adds 2 new HTML tags: `<wizard>` and `<wizard-step>`. You use them like this:
 ``` html
 <wizard current-step-number="currentStepNumber" submit="submit()">
