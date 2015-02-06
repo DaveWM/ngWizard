@@ -1,4 +1,4 @@
-# ngWizard [![Build Status](https://travis-ci.org/DaveWM/ngWizard.svg?branch=master)](https://travis-ci.org/DaveWM/ngWizard)
+# ngWizard [![Build Status](https://travis-ci.org/DaveWM/ngWizard.svg?branch=master)](https://travis-ci.org/DaveWM/ngWizard) [![bitHound Score](https://www.bithound.io/DaveWM/ngWizard/badges/score.svg)](https://www.bithound.io/DaveWM/ngWizard)
 ngWizard is an angular directive for creating an animated and reponsive wizard style form, you can see a [demo here](http://embed.plnkr.co/NIxkmEEJ0jrOPR8oM7iB/preview)
 >**Important Note** This directive is not compatible with angular 1.2.x, because of [a bug with nested transclusion](https://github.com/angular/angular.js/issues/6435).
 >You need to use angular 1.3.0 or later.
