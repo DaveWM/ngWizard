@@ -17,6 +17,7 @@
             '<wizard-step title="step 1" entered="stepEntered()"><p>step 1</p><input type="text" ng-model="requiredText" required /></wizard-step>' +
             '<wizard-step title="step 2" required-step-number="0" entered="stepEntered()"><p>step 2</p></wizard-step>' +
             '<wizard-step title="step 3" entered="stepEntered()"><p>step 3 - no required steps</p></wizard-step>' +
+            '<wizard-step title="step 4" required-step-number="999"></wizard-step>' +
             '<wizard-step title="{{title}}" ng-repeat="title in dynamicStepTitles">Title is {{title}}</wizard-step>' +
             '</wizard>');
         element = $compile(rawElement)(controllerScope);
@@ -26,9 +27,9 @@
 
     it("should compile the html correctly", function () {
         expect(element[0].tagName.toLowerCase()).toEqual('wizard');
-        expect(element.find('wizard-step').length).toEqual(3);
+        expect(element.find('wizard-step').length).toEqual(4);
         expect(controllerScope.currentStepNumber).toBe(0);
-        expect(directiveScope.steps.length).toEqual(3);
+        expect(directiveScope.steps.length).toEqual(4);
         expect(directiveScope.steps[0].title).toEqual('step 1');
         expect(element.find('wizard-step').eq(0).find('p').text()).toBe('step 1');
     });
@@ -38,6 +39,10 @@
         controllerScope.requiredText = "test";
         controllerScope.$apply();
         expect(directiveScope.getStepState(directiveScope.steps[1])).not.toEqual(directiveScope.stepStatesEnum.disabled);
+    });
+
+    it("should enable a step if the required-step-number is invalid", function() {
+        expect(directiveScope.getStepState(directiveScope.steps[3])).not.toEqual(directiveScope.stepStatesEnum.disabled);
     });
 
     it("should always enable steps which don't depend on another step", function () {
@@ -125,18 +130,18 @@
         controllerScope.dynamicStepTitles.push(stepTitle);
         controllerScope.$apply();
 
-        expect(directiveScope.steps.length).toEqual(4);
-        expect(directiveScope.steps[3].title).toEqual(stepTitle);
+        expect(directiveScope.steps.length).toEqual(5);
+        expect(directiveScope.steps[4].title).toEqual(stepTitle);
 
         controllerScope.dynamicStepTitles = [];
         controllerScope.$apply();
 
-        expect(directiveScope.steps.length).toEqual(3);
+        expect(directiveScope.steps.length).toEqual(4);
     });
 
     it("should calculate the progress percentage correctly", function() {
         // 1 out of 3 steps complete by default
-        expect(directiveScope.getProgressPercentage()).toBeCloseTo(100 / 3, 5);
+        expect(directiveScope.getProgressPercentage()).toBeCloseTo(2 * 100 / 4, 5);
 
         controllerScope.requiredText = "test";
         controllerScope.$apply();
