@@ -29,8 +29,7 @@ angular.module("src/wizardTemplate.html", []).run(["$templateCache", function($t
     "    </div>\n" +
     "    <div class=\"row\">\n" +
     "        <div class=\"col-xs-12\">\n" +
-    "            <!--Don't know why, but ng-hide doesn't work here, use ng-class instead-->\n" +
-    "            <button class=\"btn btn-primary btn-block submit\" ng-class=\"{'ng-hide': !isSubmittable()}\" ng-click=\"onSubmitClicked()\" ng-disabled=\"submitting\">Submit <i class=\"fa fa-circle-o-notch fa-spin\" ng-show=\"submitting\"></i></button>\n" +
+    "            <button class=\"btn btn-primary btn-block submit animate fade-in-out\" ng-hide=\"!isSubmittable()\" ng-click=\"onSubmitClicked()\" ng-disabled=\"submitting\">Submit <i class=\"fa fa-circle-o-notch fa-spin\" ng-show=\"submitting\"></i></button>\n" +
     "        </div>\n" +
     "    </div>\n" +
     "</div>");

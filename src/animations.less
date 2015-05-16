@@ -19,23 +19,34 @@
         &.ng-hide-remove.ng-hide-remove-active{
             @end();
         }
-        &.ng-hide-add{
-            display: none !important;
-        }
         &.ng-hide-remove{
             @start();
+        }
+        &.ng-hide-add{
+            @end();
+        }
+        &.ng-hide-add.ng-hide-add-active{
+            @start();
+        }
+    }
+    .showAnimationOnly(@start, @end){
+        .animation(@start, @end);
+        &.ng-hide-add{
+            display: none !important;
         }
     }
 
     &.slide{
-        .animation({.transform(translateX(20%)); opacity: 0.5;}, {.transform(translateX(0)); opacity: 1;});
+        .showAnimationOnly({.transform(translateX(20%)); opacity: 0.5;}, {.transform(translateX(0)); opacity: 1;});
     }
     &.fade-in{
-
+        .showAnimationOnly({opacity: 0;}, {opacity: 1;});
+    }
+    &.fade-in-out{
         .animation({opacity: 0;}, {opacity: 1;});
     }
     &.zoom{
-        .animation({
+        .showAnimationOnly({
             .transform(translateZ(-250px));
             .filter(opacity(10%));
         },{

@@ -46,8 +46,8 @@
 
                 $scope.getStepState = function(step) {
                     // step requires a previous step to be complete, and it is not
-                    if (step.requiredStepNumber && isValidStepNumber(step.requiredStepNumber)
-                        && $scope.getStepState($scope.steps[step.requiredStepNumber]) != $scope.stepStatesEnum.complete) {
+                    if (step.requiredStepNumber && isValidStepNumber(step.requiredStepNumber) &&
+                        $scope.getStepState($scope.steps[step.requiredStepNumber]) != $scope.stepStatesEnum.complete) {
                         return $scope.stepStatesEnum.disabled;
                     }
                     // if form is valid, step is complete
