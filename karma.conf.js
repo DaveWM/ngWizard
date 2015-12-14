@@ -18,7 +18,7 @@ module.exports = function(config) {
       'bower_components/angular/angular.js',
         'node_modules/angular-mocks/angular-mocks.js',
         'bower_components/angular-animate/angular-animate.js',
-      'bower_components/angular-ui-bootstrap-bower/ui-bootstrap-tpls.js',
+      'bower_components/angular-tooltips/dist/angular-tooltips.js',
       'src/**/*.js',
       'test/**/*.spec.js',
         'tmp/**/*.js'

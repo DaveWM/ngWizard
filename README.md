@@ -1,5 +1,5 @@
 # ngWizard [![Build Status](https://travis-ci.org/DaveWM/ngWizard.svg?branch=master)](https://travis-ci.org/DaveWM/ngWizard) [![bitHound Score](https://www.bithound.io/DaveWM/ngWizard/badges/score.svg)](https://www.bithound.io/DaveWM/ngWizard)
-ngWizard is an angular directive for creating an animated and reponsive wizard style form, you can see a [demo here](http://embed.plnkr.co/NIxkmEEJ0jrOPR8oM7iB/preview)
+ngWizard is an angular directive for creating an animated and reponsive wizard style form, you can see a [demo here](http://embed.plnkr.co/qj3loQYo4QBjcpEKCcEE/preview)
 >**Important Note** This directive is not compatible with angular 1.2.x, because of [a bug with nested transclusion](https://github.com/angular/angular.js/issues/6435).
 >You need to use angular 1.3.0 or later.
 
@@ -55,7 +55,6 @@ This will disable the step until the required step is completed.
 
 ## Dependencies
 ngWizard has dependencies on:
-- [UI Bootstrap](http://angular-ui.github.io/bootstrap/)
 - [Font Awesome](http://fortawesome.github.io/Font-Awesome/)
 - [Bootstrap](http://getbootstrap.com/)
 - The angular `ngAnimate` module

@@ -25,7 +25,7 @@ module.exports = function (grunt){
         },
         uglify:{
             normal:{
-                src: ['src/**/*.js', 'tmp/**/*.js'],
+                src: ['src/**/*.js', 'tmp/**/*.js', 'bower_components/angular-tooltips/dist/angular-tooltips.js'],
                 dest: 'dest/ngWizard.js',
                 options:{
                     mangle: false,
@@ -34,7 +34,7 @@ module.exports = function (grunt){
                 }
             },
             min:{
-                src: ['src/**/*.js', 'tmp/**/*.js'],
+                src: ['src/**/*.js', 'tmp/**/*.js', 'bower_components/angular-tooltips/dist/angular-tooltips.js'],
                 dest: 'dest/ngWizard.min.js',
                 options:{
                     mangle: true,

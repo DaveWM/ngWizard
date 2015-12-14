@@ -17,7 +17,7 @@
             <li class="previous" ng-class="{disabled: !hasPrevious()}"><a href="#" ng-click="goToPrevious()"><i class="fa fa-arrow-circle-left"></i> Previous</a></li>
             <li ng-repeat="step in steps">
                 <i class="fa" ng-class="{'fa-circle-o disabled': getStepState(step) == stepStatesEnum.disabled, 'fa-circle': getStepState(step) == stepStatesEnum.complete, 'fa-circle-o': getStepState(step) == stepStatesEnum.ready, selected: getCurrentStep() == step}"
-                   ng-click="goToStepByReference(step)" tooltip="{{step.title}}"></i>
+                   ng-click="goToStepByReference(step)" tooltips tooltip-template="{{step.title}}" tooltip-side="top"></i>
             </li>
             <li class="next" ng-class="{disabled: !hasNext()}"><a href="#" ng-click="goToNext()">Next <i class="fa fa-arrow-circle-right"></i></a></li>
         </ul>

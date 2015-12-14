@@ -1,4 +1,4 @@
-﻿angular.module("ngWizard", ['ui.bootstrap', 'ngAnimate', 'templates'])
+﻿angular.module("ngWizard", ['720kb.tooltips', 'ngAnimate', 'templates'])
     .directive('wizard', ['$window','$q', function($window, $q) {
         "use strict";
 
