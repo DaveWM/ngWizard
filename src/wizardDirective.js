@@ -51,7 +51,7 @@
                         return $scope.stepStatesEnum.disabled;
                     }
                     // if form is valid, step is complete
-                    else if (step.stepForm.$valid) {
+                    else if (step.stepForm && step.stepForm.$valid) {
                         return $scope.stepStatesEnum.complete;
                     }
                     else return $scope.stepStatesEnum.ready;
