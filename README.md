@@ -10,7 +10,7 @@ ngWizard is an angular directive for creating an animated and reponsive wizard s
 <script scr="bower_components/ng-wizard/dest/ngWizard.js"></script>
 <link rel="stylesheet" href="bower_components/ng-wizard/dest/ngWizard.css">
 ```
-- Add a dependency on the `ngWizard` module to your ng-app module: 
+- Add a dependency on the `ngWizard` module to your ng-app module:
 ```js
 angular.module('app',['ngWizard']);
 ```
@@ -28,14 +28,25 @@ ngWizard adds 2 new HTML tags: `<wizard>` and `<wizard-step>`. You use them like
   </wizard-step>
 </wizard>
 ```
-The `<wizard>` element wraps one or more `<wizard-step>` elements. 
-The wizard will display each step in the order they appear in the HTML. 
+The `<wizard>` element wraps one or more `<wizard-step>` elements.
+The wizard will display each step in the order they appear in the HTML.
 Each wizard step acts like a form, and a submit button will show only when all steps have been filled out and are valid.
 In the above example, the input in step 1 is required, so it must be filled in before you can submit the wizard.
 
 By default, the user can select any step they want straight away, i.e. you can move to a step without completing all previous steps.
 If you want the user to complete a step before moving to the next, you can use the `required-step-number` attribute on the `<wizard-step>`.
 This will disable the step until the required step is completed.
+
+To change the text in the previous, next and submit buttons, simply update the `wizardConfigProvider` like so:
+
+```js
+angular.module('app', ['ngWizard'])
+  .config(function (wizardConfigProvider) {
+    wizardConfigProvider.nextString = 'Next';
+    wizardConfigProvider.prevString = 'Previous';
+    wizardConfigProvider.submitString = 'Submit';
+  })
+```
 
 ### Wizard Attributes
 
