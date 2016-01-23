@@ -18,7 +18,7 @@
             '<wizard-step title="step 2" required-step-number="0" entered="stepEntered()"><p>step 2</p></wizard-step>' +
             '<wizard-step title="step 3" entered="stepEntered()"><p>step 3 - no required steps</p></wizard-step>' +
             '<wizard-step title="step 4" required-step-number="999"></wizard-step>' +
-            '<wizard-step title="{{title}}" ng-repeat="title in dynamicStepTitles">Title is {{title}}</wizard-step>' +
+            '<wizard-step title="{{title}}" ng-repeat="title in dynamicStepTitles">Title is {{title}} <input type="text" required ng-model="test"/></wizard-step>' +
             '</wizard>');
         element = $compile(rawElement)(controllerScope);
         controllerScope.$apply();
@@ -33,6 +33,32 @@
         expect(directiveScope.steps[0].title).toEqual('step 1');
         expect(element.find('wizard-step').eq(0).find('p').text()).toBe('step 1');
     });
+
+    it("should use the default text for the next, previous and submit buttons by default", function (){
+      var scope = $rootScope.$new();
+      var rawElem = angular.element('<wizard current-step-number="step"></wizard>');
+      var element = $compile(rawElem)(scope);
+      scope.$apply();
+
+      expect(element[0].querySelector('.previous a').text).toContain('Previous');
+      expect(element[0].querySelector('.next a').text).toContain('Next');
+      expect(element[0].querySelector('button.submit').textContent).toContain('Submit');
+    });
+
+    it("should use the next, previous and submit text defined in the wizardConfigProvider", inject(function (wizardConfigProvider) {
+      wizardConfigProvider.nextString = 'aaa';
+      wizardConfigProvider.prevString = 'bbb';
+      wizardConfigProvider.submitString = 'ccc';
+
+      var scope = $rootScope.$new();
+      var rawElem = angular.element('<wizard current-step-number="step"></wizard>');
+      var element = $compile(rawElem)(scope);
+      scope.$apply();
+
+      expect(element[0].querySelector('.previous a').text).toContain('bbb');
+      expect(element[0].querySelector('.next a').text).toContain('aaa');
+      expect(element[0].querySelector('button.submit').textContent).toContain('ccc');
+    }));
 
     it("should enable a step when the step it depends on is complete", function() {
         // fill in required text input in step 0, should then enable step 1
@@ -128,7 +154,7 @@
     it("should allow steps to be added dynamically", function () {
         var stepTitle = "dynamically added step";
         controllerScope.dynamicStepTitles.push(stepTitle);
-        controllerScope.$apply();
+        $rootScope.$apply();
 
         expect(directiveScope.steps.length).toEqual(5);
         expect(directiveScope.steps[4].title).toEqual(stepTitle);

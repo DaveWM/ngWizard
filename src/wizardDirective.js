@@ -10,7 +10,11 @@
                 submit: '&'
             },
             templateUrl: "src/wizardTemplate.html",
-            controller: function($scope) {
+            controller: function($scope, wizardConfigProvider) {
+                $scope.prevString = wizardConfigProvider.prevString;
+                $scope.nextString = wizardConfigProvider.nextString;
+                $scope.submitString = wizardConfigProvider.submitString;
+
                 $scope.currentStepNumber = $scope.currentStepNumber || 0;
 
                 $scope.getCurrentStep = function() {
@@ -136,27 +140,36 @@
         };
     }])
     .directive('wizardStep', function() {
-    return {
-        require: '^wizard',
-        restrict: 'E',
-        transclude: true,
-        scope: {
-            title: '@',
-            // the required step must be completed for this step to be enabled
-            requiredStepNumber: '@',
-            entered: '&',
-            animation: '@'
-        },
-        template: "<ng-form name='stepForm' ng-show='isActive()' class='wizard-step animate'  ng-class='animation || \"slide\"'><ng-transclude></ng-transclude></ng-form>",
-        link: function ($scope, element, attrs, wizardCtrl) {
-            wizardCtrl.registerStep($scope);
-            $scope.isActive = function() {
-                return $scope == wizardCtrl.getCurrentStep();
-            };
+      return {
+          require: '^wizard',
+          restrict: 'E',
+          transclude: true,
+          scope: {
+              title: '@',
+              // the required step must be completed for this step to be enabled
+              requiredStepNumber: '@',
+              entered: '&',
+              animation: '@'
+          },
+          template: "<ng-form name='stepForm' ng-show='isActive()' class='wizard-step animate'  ng-class='animation || \"slide\"'><ng-transclude></ng-transclude></ng-form>",
+          link: function ($scope, element, attrs, wizardCtrl) {
+              wizardCtrl.registerStep($scope);
+              $scope.isActive = function() {
+                  return $scope == wizardCtrl.getCurrentStep();
+              };
 
-            $scope.$on("$destroy", function() {
-                wizardCtrl.unregisterStep($scope);
-            });
-        }
-    };
-});
+              $scope.$on("$destroy", function() {
+                  wizardCtrl.unregisterStep($scope);
+              });
+          }
+       };
+    })
+    .provider('wizardConfigProvider', function () {
+      this.nextString = 'Next';
+      this.prevString = 'Previous';
+      this.submitString = 'Submit';
+
+      this.$get = function() {
+        return this;
+      };
+    });
