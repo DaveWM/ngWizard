@@ -34,7 +34,7 @@ module.exports = function (grunt){
                 }
             },
             min:{
-                src: ['src/**/*.js', 'tmp/**/*.js', 'bower_components/angular-tooltips/dist/angular-tooltips.js'],
+                src: ['src/**/*.js', 'tmp/**/*.js', 'bower_components/angular-tooltips/dist/angular-tooltips.min.js'],
                 dest: 'dest/ngWizard.min.js',
                 options:{
                     mangle: true,
