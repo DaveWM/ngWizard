@@ -142,7 +142,7 @@ angular.module("ngWizard", [ "720kb.tooltips", "ngAnimate", "templates" ]).direc
 angular.module("templates", [ "src/wizardTemplate.html" ]);
 
 angular.module("src/wizardTemplate.html", []).run([ "$templateCache", function($templateCache) {
-    $templateCache.put("src/wizardTemplate.html", '<div class="row wizard-container">\n' + '    <div class="col-md-3 col-xs-12">\n' + '        <ul class="nav nav-pills nav-stacked wizard-sidebar">\n' + '            <li tooltip="{{getProgressPercentage() | number : 2}}%">\n' + "                <progressbar value=\"getProgressPercentage()\" type=\"{{getProgressPercentage() == 100 ? 'success' : 'default'}}\"></progressbar>\n" + "            </li>\n" + '            <li ng-repeat="step in steps" ng-class="{disabled: getStepState(step) == stepStatesEnum.disabled, active: getCurrentStep() == step}"\n' + '                ng-click="goToStepByReference(step)" ng-disabled="getStepState(step) == stepStatesEnum.disabled">\n' + "                <a>\n" + '                    {{step.title}} <i class="fa fa-check" ng-show="getStepState(step) == stepStatesEnum.complete"></i>\n' + "                </a>\n" + "            </li>\n" + "        </ul>\n" + "    </div>\n" + '    <div class="col-md-9 col-xs-12 wizard-main">\n' + '        <ul class="pager">\n' + '            <li class="previous" ng-class="{disabled: !hasPrevious()}"><a href="#" ng-click="goToPrevious()"><i class="fa fa-arrow-circle-left"></i> {{prevString}}</a></li>\n' + '            <li ng-repeat="step in steps">\n' + "                <i class=\"fa\" ng-class=\"{'fa-circle-o disabled': getStepState(step) == stepStatesEnum.disabled, 'fa-circle': getStepState(step) == stepStatesEnum.complete, 'fa-circle-o': getStepState(step) == stepStatesEnum.ready, selected: getCurrentStep() == step}\"\n" + '                   ng-click="goToStepByReference(step)" tooltips tooltip-template="{{step.title}}" tooltip-side="top"></i>\n' + "            </li>\n" + '            <li class="next" ng-class="{disabled: !hasNext()}"><a href="#" ng-click="goToNext()">{{nextString}} <i class="fa fa-arrow-circle-right"></i></a></li>\n' + "        </ul>\n" + '        <div class="wizard-step-container" ng-transclude></div>\n' + "    </div>\n" + '    <div class="row">\n' + '        <div class="col-xs-12">\n' + '            <button class="btn btn-primary btn-block submit animate fade-in-out" ng-hide="!isSubmittable()" ng-click="onSubmitClicked()" ng-disabled="submitting">{{submitString}} <i class="fa fa-circle-o-notch fa-spin" ng-show="submitting"></i></button>\n' + "        </div>\n" + "    </div>\n" + "</div>\n" + "");
+    $templateCache.put("src/wizardTemplate.html", '<div class="row wizard-container">\n' + '    <div class="col-md-3 col-xs-12">\n' + '        <ul class="nav nav-pills nav-stacked wizard-sidebar">\n' + '            <li tooltip="{{getProgressPercentage() | number : 2}}%">\n' + "                <progressbar value=\"getProgressPercentage()\" type=\"{{getProgressPercentage() == 100 ? 'success' : 'default'}}\"></progressbar>\n" + "            </li>\n" + '            <li ng-repeat="step in steps" ng-class="{disabled: getStepState(step) == stepStatesEnum.disabled, active: getCurrentStep() == step}"\n' + '                ng-click="goToStepByReference(step)" ng-disabled="getStepState(step) == stepStatesEnum.disabled">\n' + "                <a>\n" + '                    {{step.title}} <i class="fa fa-check" ng-show="getStepState(step) == stepStatesEnum.complete"></i>\n' + "                </a>\n" + "            </li>\n" + "        </ul>\n" + "    </div>\n" + '    <div class="col-md-9 col-xs-12 wizard-main">\n' + '        <ul class="pager">\n' + '            <li class="previous" ng-class="{disabled: !hasPrevious()}"><a ng-click="goToPrevious()"><i class="fa fa-arrow-circle-left"></i> {{prevString}}</a></li>\n' + '            <li ng-repeat="step in steps">\n' + "                <i class=\"fa\" ng-class=\"{'fa-circle-o disabled': getStepState(step) == stepStatesEnum.disabled, 'fa-circle': getStepState(step) == stepStatesEnum.complete, 'fa-circle-o': getStepState(step) == stepStatesEnum.ready, selected: getCurrentStep() == step}\"\n" + '                   ng-click="goToStepByReference(step)" tooltips tooltip-template="{{step.title}}" tooltip-side="top"></i>\n' + "            </li>\n" + '            <li class="next" ng-class="{disabled: !hasNext()}"><a ng-click="goToNext()">{{nextString}} <i class="fa fa-arrow-circle-right"></i></a></li>\n' + "        </ul>\n" + '        <div class="wizard-step-container" ng-transclude></div>\n' + "    </div>\n" + '    <div class="row">\n' + '        <div class="col-xs-12">\n' + '            <button class="btn btn-primary btn-block submit animate fade-in-out" ng-hide="!isSubmittable()" ng-click="onSubmitClicked()" ng-disabled="submitting">{{submitString}} <i class="fa fa-circle-o-notch fa-spin" ng-show="submitting"></i></button>\n' + "        </div>\n" + "    </div>\n" + "</div>\n" + "");
 } ]);
 
 (function withAngular(angular, window) {
@@ -287,7 +287,7 @@ angular.module("src/wizardTemplate.html", []).run([ "$templateCache", function($
     }, tooltipDirective = [ "$log", "$http", "$compile", "$timeout", "$controller", "$injector", "tooltipsConf", function tooltipDirective($log, $http, $compile, $timeout, $controller, $injector, tooltipsConf) {
         var linkingFunction = function linkingFunction($scope, $element, $attrs, $controllerDirective, $transcludeFunc) {
             if ($attrs.tooltipTemplate && $attrs.tooltipTemplateUrl) {
-                throw new Error("You can not define tooltip-template and tooltip-url together");
+                throw new Error("You can not define tooltip-template and tooltip-template-url together");
             }
             if (!($attrs.tooltipTemplateUrl || $attrs.tooltipTemplate) && $attrs.tooltipController) {
                 throw new Error("You can not have a controller without a template or templateUrl defined");
@@ -479,17 +479,22 @@ angular.module("src/wizardTemplate.html", []).run([ "$templateCache", function($
                     }
                 }, onTooltipTemplateChange = function onTooltipTemplateChange(newValue) {
                     if (newValue) {
+                        tooltipElement.removeClass("_force-hidden");
                         tipTipElement.empty();
                         tipTipElement.append(closeButtonElement);
                         tipTipElement.append(newValue);
-                        $timeout(function doLater() {
+                        $timeout(function doLaterShow() {
                             onTooltipShow();
                         });
+                    } else {
+                        tipTipElement.empty();
+                        tooltipElement.addClass("_force-hidden");
                     }
                 }, onTooltipTemplateUrlChange = function onTooltipTemplateUrlChange(newValue) {
                     if (newValue) {
                         $http.get(newValue).then(function onResponse(response) {
                             if (response && response.data) {
+                                tooltipElement.removeClass("_force-hidden");
                                 tipTipElement.empty();
                                 tipTipElement.append(closeButtonElement);
                                 tipTipElement.append($compile(response.data)(scope));
@@ -498,6 +503,9 @@ angular.module("src/wizardTemplate.html", []).run([ "$templateCache", function($
                                 });
                             }
                         });
+                    } else {
+                        tipTipElement.empty();
+                        tooltipElement.addClass("_force-hidden");
                     }
                 }, onTooltipSideChange = function onTooltipSideChange(newValue) {
                     if (newValue) {

@@ -7,17 +7,22 @@
 
     .wizard-main{ 
         padding: 20px;
-        .pager i{
-            -webkit-transition: all 0.3s ease;
-            &.selected{
-                color: #38a7e2;
-                -webkit-transform: translateY(-3px);
-            }
-            &.disabled{
-                color:gray;
-                cursor: not-allowed;
-            }
-       }
+        .pager {
+	    i {
+		-webkit-transition: all 0.3s ease;
+		&.selected{
+                    color: #38a7e2;
+                    -webkit-transform: translateY(-3px);
+		}
+		&.disabled{
+                    color:gray;
+                    cursor: not-allowed;
+		}
+	    }
+	    a {
+		cursor: pointer;
+	    }
+	}
         .wizard-step-container{
             // this is to prevent sliding animation making the container wider than it should be
             overflow-x: hidden;

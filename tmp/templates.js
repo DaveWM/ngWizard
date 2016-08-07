@@ -18,12 +18,12 @@ angular.module("src/wizardTemplate.html", []).run(["$templateCache", function($t
     "    </div>\n" +
     "    <div class=\"col-md-9 col-xs-12 wizard-main\">\n" +
     "        <ul class=\"pager\">\n" +
-    "            <li class=\"previous\" ng-class=\"{disabled: !hasPrevious()}\"><a href=\"#\" ng-click=\"goToPrevious()\"><i class=\"fa fa-arrow-circle-left\"></i> {{prevString}}</a></li>\n" +
+    "            <li class=\"previous\" ng-class=\"{disabled: !hasPrevious()}\"><a ng-click=\"goToPrevious()\"><i class=\"fa fa-arrow-circle-left\"></i> {{prevString}}</a></li>\n" +
     "            <li ng-repeat=\"step in steps\">\n" +
     "                <i class=\"fa\" ng-class=\"{'fa-circle-o disabled': getStepState(step) == stepStatesEnum.disabled, 'fa-circle': getStepState(step) == stepStatesEnum.complete, 'fa-circle-o': getStepState(step) == stepStatesEnum.ready, selected: getCurrentStep() == step}\"\n" +
     "                   ng-click=\"goToStepByReference(step)\" tooltips tooltip-template=\"{{step.title}}\" tooltip-side=\"top\"></i>\n" +
     "            </li>\n" +
-    "            <li class=\"next\" ng-class=\"{disabled: !hasNext()}\"><a href=\"#\" ng-click=\"goToNext()\">{{nextString}} <i class=\"fa fa-arrow-circle-right\"></i></a></li>\n" +
+    "            <li class=\"next\" ng-class=\"{disabled: !hasNext()}\"><a ng-click=\"goToNext()\">{{nextString}} <i class=\"fa fa-arrow-circle-right\"></i></a></li>\n" +
     "        </ul>\n" +
     "        <div class=\"wizard-step-container\" ng-transclude></div>\n" +
     "    </div>\n" +
