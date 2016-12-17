@@ -7,7 +7,7 @@ ngWizard is an angular directive for creating an animated and reponsive wizard s
 - Either run `bower install ng-wizard --save`, or download the repo and add `dest/ngWizard.js` and `dest/ngWizard.css` to your project
 - Reference `ngWizard.js` and `ngWizard.css` in your HTML, e.g.
 ```html
-<script scr="bower_components/ng-wizard/dest/ngWizard.js"></script>
+<script src="bower_components/ng-wizard/dest/ngWizard.js"></script>
 <link rel="stylesheet" href="bower_components/ng-wizard/dest/ngWizard.css">
 ```
 - Add a dependency on the `ngWizard` module to your ng-app module:
