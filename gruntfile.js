@@ -13,11 +13,11 @@ module.exports = function (grunt){
         less:{
             normal:{
                 src: ['src/styles.less'],
-                dest: 'dest/ngWizard.css'
+                dest: 'dist/ngWizard.css'
             },
             min:{
                 src: ['src/styles.less'],
-                dest: 'dest/ngWizard.min.css',
+                dest: 'dist/ngWizard.min.css',
                 options:{
                     compress: true
                 }
@@ -26,7 +26,7 @@ module.exports = function (grunt){
         uglify:{
             normal:{
                 src: ['src/**/*.js', 'tmp/**/*.js', 'bower_components/angular-tooltips/dist/angular-tooltips.js'],
-                dest: 'dest/ngWizard.js',
+                dest: 'dist/ngWizard.js',
                 options:{
                     mangle: false,
                     compress: false,
@@ -35,7 +35,7 @@ module.exports = function (grunt){
             },
             min:{
                 src: ['src/**/*.js', 'tmp/**/*.js', 'bower_components/angular-tooltips/dist/angular-tooltips.min.js'],
-                dest: 'dest/ngWizard.min.js',
+                dest: 'dist/ngWizard.min.js',
                 options:{
                     mangle: true,
                     compress: true,
