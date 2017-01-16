@@ -48,8 +48,8 @@ module.exports = function (grunt){
                 src: ['src/**/*.html'],
                 dest: 'tmp/templates.js',
                 options: {
-                    module: 'templates',
-                    base: ''
+                    module: 'ngWizardTemplates',
+                    base: 'src'
                 }
             }
         },

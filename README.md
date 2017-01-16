@@ -37,7 +37,7 @@ By default, the user can select any step they want straight away, i.e. you can m
 If you want the user to complete a step before moving to the next, you can use the `required-step-number` attribute on the `<wizard-step>`.
 This will disable the step until the required step is completed.
 
-To change the text in the previous, next and submit buttons, simply update the `wizardConfigProvider` like so:
+To localise the text in the previous, next and submit buttons, simply update the `wizardConfigProvider` like so:
 
 ```js
 angular.module('app', ['ngWizard'])
@@ -63,6 +63,10 @@ angular.module('app', ['ngWizard'])
 | `required-step-number` | integer | The step that is required before this step can be navigated to (0 indexed). |
 | `entered` | function | Function  to call when this step is entered. |
 | `animation` | string | Determines the type animation for entering this step. By default, you can choose `slide`, `zoom` or `fade-in`. If you want to add your own animations, you can add them in css [as in the angular documentation](https://docs.angularjs.org/api/ng/directive/ngShow#animations).|
+
+## Using a custom template
+
+To change how the wizard is displayed, you need to override the `ngWizardTemplate.html` template in `$templateCache`. The default template can be found at `src/ngWizardTemplate.html`. For more information, please see the [angularjs $templateCache documentation.](https://docs.angularjs.org/api/ng/service/$templateCache)
 
 ## Dependencies
 ngWizard has dependencies on:

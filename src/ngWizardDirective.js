@@ -1,4 +1,4 @@
-﻿angular.module("ngWizard", ['720kb.tooltips', 'ngAnimate', 'templates'])
+﻿angular.module("ngWizard", ['720kb.tooltips', 'ngAnimate', 'ngWizardTemplates'])
     .directive('wizard', ['$window','$q', function($window, $q) {
         "use strict";
 
@@ -9,7 +9,7 @@
                 currentStepNumber: '=',
                 submit: '&'
             },
-            templateUrl: "src/wizardTemplate.html",
+            templateUrl: "ngWizardTemplate.html",
             controller: function($scope, wizardConfigProvider) {
                 $scope.prevString = wizardConfigProvider.prevString;
                 $scope.nextString = wizardConfigProvider.nextString;

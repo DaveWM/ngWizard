@@ -1,7 +1,7 @@
-angular.module('templates', ['src/wizardTemplate.html']);
+angular.module('ngWizardTemplates', ['ngWizardTemplate.html']);
 
-angular.module("src/wizardTemplate.html", []).run(["$templateCache", function($templateCache) {
-  $templateCache.put("src/wizardTemplate.html",
+angular.module("ngWizardTemplate.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("ngWizardTemplate.html",
     "<div class=\"row wizard-container\">\n" +
     "    <div class=\"col-md-3 col-xs-12\">\n" +
     "        <ul class=\"nav nav-pills nav-stacked wizard-sidebar\">\n" +
